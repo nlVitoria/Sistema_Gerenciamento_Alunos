@@ -40,7 +40,7 @@ void cadastrarAluno(Aluno **lista, int *quantidade){
     do{
         printf("Periodo: ");
         scanf("%d", &novo->periodo);
-    } while (novo->periodo <= 0);
+    }while (novo->periodo <= 0);
 
     do{
         printf("Media: ");

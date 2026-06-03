@@ -9,7 +9,7 @@ void menuPrincipal(Aluno **lista, int *quantidade){
 
     carregarDados(lista, quantidade);
 
-    do {
+    do{
         printf("\n===== SISTEMA DE ALUNOS =====\n");
         printf("1 - Cadastrar aluno\n");
         printf("2 - Listar alunos\n");
@@ -43,7 +43,7 @@ void menuPrincipal(Aluno **lista, int *quantidade){
 
                 if (indice == -1){
                     printf("Aluno nao encontrado.\n");
-                } else {
+                }else{
                     printf("\nNome: %s\n", (*lista)[indice].nome);
                     printf("Curso: %s\n", (*lista)[indice].curso);
                     printf("Media: %.2f\n", (*lista)[indice].media);

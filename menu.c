@@ -4,7 +4,7 @@
 #include "arquivo.h"
 #include "aluno.h"
 
-void menuPrincipal(Aluno **lista, int *quantidade) {
+void menuPrincipal(Aluno **lista, int *quantidade){
     int opcao, id, indice;
 
     carregarDados(lista, quantidade);
@@ -20,13 +20,13 @@ void menuPrincipal(Aluno **lista, int *quantidade) {
         printf("0 - Sair\n");
         printf("Escolha: ");
 
-        if (scanf("%d", &opcao) != 1) {
+        if (scanf("%d", &opcao) != 1){
             while (getchar() != '\n');
             opcao = -1;
             continue;
         }
 
-        switch(opcao) {
+        switch(opcao){
             case 1:
                 cadastrarAluno(lista, quantidade);
                 break;
@@ -41,7 +41,7 @@ void menuPrincipal(Aluno **lista, int *quantidade) {
 
                 indice = buscarAlunoPorId(*lista, *quantidade, id);
 
-                if (indice == -1) {
+                if (indice == -1){
                     printf("Aluno nao encontrado.\n");
                 } else {
                     printf("\nNome: %s\n", (*lista)[indice].nome);

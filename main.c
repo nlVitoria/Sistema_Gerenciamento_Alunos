@@ -2,7 +2,7 @@
 #include "menu.h"
 #include "aluno.h"
 
-int main() {
+int main(){
     Aluno *lista = NULL;
     int quantidade = 0;
 

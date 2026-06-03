@@ -3,21 +3,21 @@
 #include <string.h>
 #include "aluno.h"
 
-void cadastrarAluno(Aluno **lista, int *quantidade) {
+void cadastrarAluno(Aluno **lista, int *quantidade){
     int idTemp;
 
     printf("\n===== CADASTRAR ALUNO =====\n");
     printf("ID: ");
     scanf("%d", &idTemp);
 
-    if (buscarAlunoPorId(*lista, *quantidade, idTemp) != -1) {
+    if (buscarAlunoPorId(*lista, *quantidade, idTemp) != -1){
         printf("\nErro: ID ja cadastrado!\n");
         return;
     }
 
     Aluno *temp = realloc(*lista, (*quantidade + 1) * sizeof(Aluno));
 
-    if (temp == NULL) {
+    if (temp == NULL){
         printf("\nErro de alocacao de memoria!\n");
         return;
     }
@@ -29,35 +29,35 @@ void cadastrarAluno(Aluno **lista, int *quantidade) {
     printf("Nome: ");
     scanf(" %[^\n]", novo->nome);
 
-    do {
+    do{
         printf("Idade: ");
         scanf("%d", &novo->idade);
-    } while (novo->idade < 0);
+    }while (novo->idade < 0);
 
     printf("Curso: ");
     scanf(" %[^\n]", novo->curso);
 
-    do {
+    do{
         printf("Periodo: ");
         scanf("%d", &novo->periodo);
     } while (novo->periodo <= 0);
 
-    do {
+    do{
         printf("Media: ");
         scanf("%f", &novo->media);
-    } while (novo->media < 0 || novo->media > 10);
+    }while (novo->media < 0 || novo->media > 10);
 
     (*quantidade)++;
     printf("\nAluno cadastrado com sucesso!\n");
 }
 
-void listarAlunos(Aluno *lista, int quantidade) {
-    if (quantidade == 0) {
+void listarAlunos(Aluno *lista, int quantidade){
+    if (quantidade == 0){
         printf("\nNenhum aluno cadastrado.\n");
         return;
     }
 
-    for (int i = 0; i < quantidade; i++) {
+    for (int i = 0; i < quantidade; i++){
         printf("\n===== ALUNO %d =====\n", i + 1);
         printf("ID: %d\n", lista[i].id);
         printf("Nome: %s\n", lista[i].nome);
@@ -68,21 +68,21 @@ void listarAlunos(Aluno *lista, int quantidade) {
     }
 }
 
-int buscarAlunoPorId(Aluno *lista, int quantidade, int id) {
-    for (int i = 0; i < quantidade; i++) {
+int buscarAlunoPorId(Aluno *lista, int quantidade, int id){
+    for (int i = 0; i < quantidade; i++){
         if (lista[i].id == id) return i;
     }
     return -1;
 }
 
-void atualizarAluno(Aluno *lista, int quantidade) {
+void atualizarAluno(Aluno *lista, int quantidade){
     int id;
     printf("\nDigite o ID do aluno: ");
     scanf("%d", &id);
 
     int indice = buscarAlunoPorId(lista, quantidade, id);
 
-    if (indice == -1) {
+    if (indice == -1){
         printf("\nAluno nao encontrado.\n");
         return;
     }
@@ -90,28 +90,28 @@ void atualizarAluno(Aluno *lista, int quantidade) {
     printf("Novo nome: ");
     scanf(" %[^\n]", lista[indice].nome);
 
-    do {
+    do{
         printf("Nova idade: ");
         scanf("%d", &lista[indice].idade);
-    } while (lista[indice].idade < 0);
+    }while (lista[indice].idade < 0);
 
     printf("Novo curso: ");
     scanf(" %[^\n]", lista[indice].curso);
 
-    do {
+    do{
         printf("Novo periodo: ");
         scanf("%d", &lista[indice].periodo);
-    } while (lista[indice].periodo <= 0);
+    }while (lista[indice].periodo <= 0);
 
-    do {
+    do{
         printf("Nova media: ");
         scanf("%f", &lista[indice].media);
-    } while (lista[indice].media < 0 || lista[indice].media > 10);
+    }while (lista[indice].media < 0 || lista[indice].media > 10);
 
     printf("\nAluno atualizado com sucesso!\n");
 }
 
-void removerAluno(Aluno **lista, int *quantidade) {
+void removerAluno(Aluno **lista, int *quantidade){
     int id;
     char confirmar;
 
@@ -120,7 +120,7 @@ void removerAluno(Aluno **lista, int *quantidade) {
 
     int indice = buscarAlunoPorId(*lista, *quantidade, id);
 
-    if (indice == -1) {
+    if (indice == -1){
         printf("\nAluno nao encontrado.\n");
         return;
     }
@@ -128,21 +128,21 @@ void removerAluno(Aluno **lista, int *quantidade) {
     printf("Deseja remover %s? (s/n): ", (*lista)[indice].nome);
     scanf(" %c", &confirmar);
 
-    if (confirmar != 's' && confirmar != 'S') {
+    if (confirmar != 's' && confirmar != 'S'){
         printf("\nRemocao cancelada.\n");
         return;
     }
 
-    for (int i = indice; i < *quantidade - 1; i++) {
+    for (int i = indice; i < *quantidade - 1; i++){
         (*lista)[i] = (*lista)[i + 1];
     }
 
     (*quantidade)--;
 
-    if (*quantidade > 0) {
+    if (*quantidade > 0){
         Aluno *temp = realloc(*lista, (*quantidade) * sizeof(Aluno));
         if (temp != NULL) *lista = temp;
-    } else {
+    }else{
         free(*lista);
         *lista = NULL;
     }
@@ -150,12 +150,12 @@ void removerAluno(Aluno **lista, int *quantidade) {
     printf("\nAluno removido com sucesso!\n");
 }
 
-void ordenarPorNome(Aluno *lista, int quantidade) {
+void ordenarPorNome(Aluno *lista, int quantidade){
     Aluno temp;
 
-    for (int i = 0; i < quantidade - 1; i++) {
-        for (int j = i + 1; j < quantidade; j++) {
-            if (strcmp(lista[i].nome, lista[j].nome) > 0) {
+    for (int i = 0; i < quantidade - 1; i++){
+        for (int j = i + 1; j < quantidade; j++){
+            if (strcmp(lista[i].nome, lista[j].nome) > 0){
                 temp = lista[i];
                 lista[i] = lista[j];
                 lista[j] = temp;

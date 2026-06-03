@@ -1,14 +1,14 @@
 #ifndef ALUNO_H
 #define ALUNO_H
 
-typedef struct {
+typedef struct{
     int id;
     char nome[100];
     int idade;
     char curso[50];
     int periodo;
     float media;
-} Aluno;
+}Aluno;
 
 void cadastrarAluno(Aluno **lista, int *quantidade);
 void listarAlunos(Aluno *lista, int quantidade);

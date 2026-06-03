@@ -3,6 +3,10 @@ Sistema de Gerenciamento de Alunos
 
 Projeto prático da disciplina de Programação Avançada em C.
 
+Membros: Miquéias Firmino
+         Tiago Rafael
+         Vitoria Lustosa
+
 Curso: Ciência da Computação  
 Disciplina: Programação Avançada  
 Professor: Thierry Araujo  
